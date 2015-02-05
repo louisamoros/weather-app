@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>polymer app</title>
+    <title>weather app</title>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css styles/main.css -->
@@ -19,13 +19,27 @@
     <link rel="import" href="elements/elements.html">
     <!-- endbuild-->
   </head>
-  <body unresolved>
-    <div class="hero-unit">
-      <yo-greeting></yo-greeting>
-      <p>You now have</p>
-      <yo-list></yo-list>
+  <body fullbleed layout vertical>
+    <paper-menu-button>
+      <paper-icon-button icon="menu" noink></paper-icon-button>
+      <paper-dropdown class="dropdown">
+        <core-menu class="menu">
+          <paper-item>Home</paper-item>
+          <paper-item>Help</paper-item>
+        </core-menu>
+      </paper-dropdown>
+    </paper-menu-button>
+    <paper-input label="Enter a location..."></paper-input>
+    <div horizontal layout>
+      <div flex></div>
+        <div vertical layout>
+          <div flex>
+            <core-icon icon='polymer'></core-icon>
+            <strong>made with polymer</strong>
+          </div>
+        </div>
+      <div flex></div>
     </div>
-
     <!-- build:js scripts/app.js -->
     <script src="scripts/app.js"></script>
     <!-- endbuild-->
