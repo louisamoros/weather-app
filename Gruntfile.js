@@ -213,8 +213,8 @@ module.exports = function (grunt) {
           strip: true
         },
         files: {
-          '<%= yeoman.dist %>/elements/elements.vulcanized.html': [
-            '<%= yeoman.dist %>/elements/elements.html'
+          '<%= yeoman.dist %>/components/elements/elements.vulcanized.html': [
+            '<%= yeoman.dist %>/components/elements/elements.html'
           ]
         }
       }
@@ -223,9 +223,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= yeoman.app %>/images',
+          cwd: '<%= yeoman.app %>/assets/images',
           src: '{,*/}*.{png,jpg,jpeg,svg}',
-          dest: '<%= yeoman.dist %>/images'
+          dest: '<%= yeoman.dist %>/assets/images'
         }]
       }
     },
@@ -255,9 +255,9 @@ module.exports = function (grunt) {
             '*.{ico,txt}',
             '.htaccess',
             '*.html',
-            'elements/**',
-            '!elements/**/*.scss',
-            'images/{,*/}*.{webp,gif}',
+            'components/elements/**',
+            '!components/elements/**/*.scss',
+            'assets/images/{,*/}*.{webp,gif}',
             'bower_components/**'
           ]
         }]
@@ -267,7 +267,7 @@ module.exports = function (grunt) {
           expand: true,
           cwd: '<%= yeoman.app %>',
           dest: '.tmp',
-          src: ['{styles,elements}/{,*/}*.css']
+          src: ['{components/elements,app}/{,*/}*.css']
         }]
       }
     },
