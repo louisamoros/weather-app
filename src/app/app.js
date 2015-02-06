@@ -6,15 +6,23 @@
     console.log('Polymer is ready to rock!');
   });
 
-  angular.module('angularFullstackApp', [
+  angular.module('weather-app', [
+  	'ngResource',
   	'ui.router'
   	])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
   	$urlRouterProvider
-  	.otherwise('/');
+  	.otherwise('/home');
+
+	// Now set up the states
+	$stateProvider
+	.state('home', {
+		url: "/main",
+		templateUrl: "main/main.html"
+	})
 
   	$locationProvider.html5Mode(true);
-  	$httpProvider.interceptors.push('authInterceptor');
+  	//$httpProvider.interceptors.push('authInterceptor');
   })
 
 

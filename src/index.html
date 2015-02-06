@@ -19,17 +19,18 @@
     <link rel="import" href="components/elements/elements.html">
     <!-- endbuild-->
   </head>
-  <body fullbleed layout vertical>
+  <body fullbleed layout vertical ng-app="weather-app">
     <paper-menu-button>
       <paper-icon-button icon="menu" noink></paper-icon-button>
       <paper-dropdown class="dropdown">
         <core-menu class="menu">
-          <paper-item>Home</paper-item>
-          <paper-item>Help</paper-item>
+          <paper-item ng-href="#/home">Home</paper-item>
+          <paper-item ng-href="#/main">Help</paper-item>
         </core-menu>
       </paper-dropdown>
     </paper-menu-button>
     <paper-input label="Enter a location..."></paper-input>
+    <div ng-view=""></div>
     <div horizontal layout>
       <div flex></div>
         <div vertical layout>
@@ -42,6 +43,7 @@
     </div>
     <!-- build:js scripts/app.js -->
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/ui-router/release/angular-ui-router.js"></script>
     <script src="app/app.js"></script>
     <!-- endbuild-->
