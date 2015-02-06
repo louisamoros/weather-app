@@ -161,6 +161,18 @@ module.exports = function (grunt) {
       dist: ['.tmp', '<%= yeoman.dist %>/*'],
       server: '.tmp'
     },
+    buildcontrol: {
+      dist: {
+        options: {
+          remote: 'git@github.com:louisamoros/weather-app.git',
+          branch: 'gh-pages',
+          commit: true,
+          //login: 'louisamoros', 
+          push: true,
+          connectCommits: false
+        }
+      }
+    },
     jshint: {
       options: {
         jshintrc: '.jshintrc',
@@ -337,5 +349,10 @@ module.exports = function (grunt) {
     'jshint',
     // 'test'
     'build'
+  ]);
+  
+  grunt.registerTask('deploy', [
+    'default',
+    'buildcontrol'
   ]);
 };
