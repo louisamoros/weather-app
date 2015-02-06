@@ -37,28 +37,33 @@ module.exports = function (grunt) {
         },
         files: [
           '<%= yeoman.app %>/*.html',
-          '<%= yeoman.app %>/elements/{,*/}*.html',
-          '{.tmp,<%= yeoman.app %>}/elements/{,*/}*.css',
-          '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
-          '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
+          '<%= yeoman.app %>/app/{,*/}*.html',
+          '<%= yeoman.app %>/components/{,*/}*.html',
+          '{.tmp,<%= yeoman.app %>}/app/{,*/}*.css',
+          '{.tmp,<%= yeoman.app %>}/components/{,*/}*.css',
+          '{.tmp,<%= yeoman.app %>}/app/{,*/}*.js',
+          '{.tmp,<%= yeoman.app %>}/components/{,*/}*.js',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       },
       js: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
+        files: [
+          '<%= yeoman.app %>/app/{,*/}*.js',
+          '<%= yeoman.app %>/components/{,*/}*.js'
+        ],
         tasks: ['jshint']
       },
       styles: {
         files: [
-          '<%= yeoman.app %>/styles/{,*/}*.css',
-          '<%= yeoman.app %>/elements/{,*/}*.css'
+          '<%= yeoman.app %>/app/{,*/}*.css',
+          '<%= yeoman.app %>/components/{,*/}*.css'
         ],
         tasks: ['copy:styles', 'autoprefixer:server']
       },
       sass: {
         files: [
-          '<%= yeoman.app %>/styles/{,*/}*.{scss,sass}',
-          '<%= yeoman.app %>/elements/{,*/}*.{scss,sass}'
+          '<%= yeoman.app %>/app/{,*/}*.{scss,sass}',
+          '<%= yeoman.app %>/components/{,*/}*.{scss,sass}'
         ],
         tasks: ['sass:server', 'autoprefixer:server']
       }
@@ -75,7 +80,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>',
-          src: ['styles/{,*/}*.{scss,sass}', 'elements/{,*/}*.{scss,sass}'],
+          src: ['app/{,*/}*.{scss,sass}', 'components/{,*/}*.{scss,sass}'],
           dest: '<%= yeoman.dist %>',
           ext: '.css'
         }]
@@ -84,7 +89,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>',
-          src: ['styles/{,*/}*.{scss,sass}', 'elements/{,*/}*.{scss,sass}'],
+          src: ['app/{,*/}*.{scss,sass}', 'components/{,*/}*.{scss,sass}'],
           dest: '.tmp',
           ext: '.css'
         }]
@@ -179,8 +184,8 @@ module.exports = function (grunt) {
         reporter: require('jshint-stylish')
       },
       all: [
-        '<%= yeoman.app %>/scripts/{,*/}*.js',
-        '!<%= yeoman.app %>/scripts/vendor/*',
+        '<%= yeoman.app %>/app/{,*/}*.js',
+        '<%= yeoman.app %>/components/{,*/}*.js',
         'test/spec/{,*/}*.js'
       ]
     },
@@ -192,7 +197,7 @@ module.exports = function (grunt) {
     },
     usemin: {
       html: ['<%= yeoman.dist %>/{,*/}*.html'],
-      css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
+      css: ['<%= yeoman.dist %>/{,*/}*.css'],
       options: {
         dirs: ['<%= yeoman.dist %>'],
         blockReplacements: {
